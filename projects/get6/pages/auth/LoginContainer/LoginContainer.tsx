@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "antd";
 import { PlaySquareOutlined } from "@ant-design/icons";
-import styles from "./LoginContainer.module.scss";
+import styles from "./Login.module.scss";
 
 interface LoginContainerProps {
   onSteamLogin?: () => void;
