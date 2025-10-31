@@ -1,6 +1,6 @@
 import defaultAxios from "axios";
 
 export const axios = defaultAxios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://homelander-production.up.railway.app/",
   withCredentials: true,
 });

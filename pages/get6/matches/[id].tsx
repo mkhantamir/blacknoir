@@ -31,7 +31,9 @@ export default function MatchDetailPage() {
     }
   }, [params]);
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8000/ws");
+    const ws = new WebSocket(
+      "ws://homelander-production.up.railway.app/get6/event/socket/ws"
+    );
     ws.onmessage = async (event) => {
       const data = JSON.parse(event.data);
       if (data.id) {
@@ -92,7 +94,7 @@ export default function MatchDetailPage() {
           }}
           onLoadJson={async () => {
             try {
-              const response = await axios.post(
+              const response = await axios.get(
                 `/get6/action/${params.id}/load`
               );
               toast.success(response.data.message ?? "Success!");
