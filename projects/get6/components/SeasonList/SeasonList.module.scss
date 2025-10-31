@@ -1,0 +1,43 @@
+.container {
+  .card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .expandedView {
+    background: #fafafa;
+    padding: 16px 24px;
+    margin: -16px -16px;
+
+    .infoGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+
+      .infoItem {
+        display: flex;
+        gap: 8px;
+
+        .label {
+          font-weight: 600;
+          color: rgba(0, 0, 0, 0.65);
+          min-width: 80px;
+        }
+
+        .value {
+          color: rgba(0, 0, 0, 0.85);
+        }
+      }
+    }
+  }
+
+  .expandedEdit {
+    background: #fafafa;
+    padding: 24px;
+    margin: -16px -16px;
+
+    :global(.ant-form-item) {
+      margin-bottom: 0;
+      max-width: 500px;
+    }
+  }
+}

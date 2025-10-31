@@ -1,0 +1,175 @@
+.container {
+  .headerCard {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    min-height: 250px;
+
+    :global(.ant-card-body) {
+      padding: 0;
+    }
+
+    .mapBackground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+      background-color: #ddd;
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    .headerContent {
+      position: relative;
+      z-index: 1;
+      padding: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+
+      .matchInfo {
+        flex: 1;
+
+        .topInfo {
+          display: flex;
+          gap: 16px;
+          align-items: center;
+          margin-bottom: 24px;
+
+          .bestof {
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 4px 12px;
+            border-radius: 4px;
+          }
+
+          .map {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffd700;
+          }
+        }
+
+        .teams {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+
+          .team {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+
+            .teamName {
+              font-size: 24px;
+              font-weight: 600;
+              color: #000;
+            }
+
+            .score {
+              font-size: 48px;
+              font-weight: 700;
+              color: #000;
+            }
+          }
+
+          .vs {
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+          }
+        }
+      }
+
+      .actions {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .statsSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    .statsCard {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      :global(.ant-table) {
+        font-size: 14px;
+
+        :global(thead > tr > th) {
+          font-weight: 600;
+          background: #fafafa;
+        }
+
+        :global(tbody > tr:hover > td) {
+          background: #f5f5f5;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    .statsSection {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    .headerCard .headerContent {
+      flex-direction: column;
+      padding: 24px;
+
+      .matchInfo .teams {
+        flex-direction: column;
+        gap: 12px;
+
+        .team {
+          width: 100%;
+
+          .teamName {
+            font-size: 18px;
+          }
+
+          .score {
+            font-size: 36px;
+          }
+        }
+
+        .vs {
+          font-size: 14px;
+        }
+      }
+
+      .actions {
+        width: 100%;
+
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.container {
+  max-width: 800px;
+
+  .card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    .playersSection {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #f0f0f0;
+
+      .sectionTitle {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      .playerRow {
+        margin-bottom: 16px;
+
+        .playerFields {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+
+          .steam64Field {
+            flex: 1.2;
+            margin-bottom: 0;
+          }
+
+          .nameField {
+            flex: 1;
+            margin-bottom: 0;
+          }
+
+          .removeIcon {
+            font-size: 20px;
+            color: #ff4d4f;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: color 0.3s;
+
+            &:hover {
+              color: #ff7875;
+            }
+          }
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
+  }
+}

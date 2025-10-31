@@ -1,0 +1,121 @@
+.container {
+  max-width: 900px;
+
+  .card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    .section {
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #f0f0f0;
+
+      &:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .sectionTitle {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: rgba(0, 0, 0, 0.85);
+      }
+
+      .formGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+
+        :global(.ant-form-item) {
+          margin-bottom: 0;
+        }
+      }
+
+      .mapsSection {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        .mapRow {
+          background: #fafafa;
+          padding: 20px;
+          border-radius: 8px;
+          border: 1px solid #f0f0f0;
+
+          .mapHeader {
+            margin-bottom: 16px;
+
+            .mapNumber {
+              font-size: 16px;
+              font-weight: 600;
+              color: rgba(0, 0, 0, 0.85);
+            }
+          }
+
+          .mapFields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+
+            .mapSelect,
+            .sideSelect {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
+      .spectatorRow {
+        margin-bottom: 12px;
+
+        .spectatorFields {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+
+          .steam64Field {
+            flex: 1.2;
+            margin-bottom: 0;
+          }
+
+          .nameField {
+            flex: 1;
+            margin-bottom: 0;
+          }
+
+          .removeIcon {
+            font-size: 20px;
+            color: #ff4d4f;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: color 0.3s;
+
+            &:hover {
+              color: #ff7875;
+            }
+          }
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 32px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container .card .section {
+    .formGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .mapsSection .mapRow .mapFields {
+      grid-template-columns: 1fr;
+    }
+  }
+}
