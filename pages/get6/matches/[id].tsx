@@ -20,10 +20,14 @@ export default function MatchDetailPage() {
             `/rcon/server/${response.data.result.server_id}/get`
           );
           setServer(response3.data.result);
-          const response2 = await axios.get(
-            `/get6/event/roundend/${params.id}`
-          );
-          setEvent(response2.data.result);
+          try {
+            const response2 = await axios.get(
+              `/get6/event/roundend/${params.id}`
+            );
+            setEvent(response2.data.result);
+          } catch (error) {
+            console.log(error);
+          }
         } catch (error: any) {
           toast.error(error.response.data?.message ?? "Unknown error!");
         }
@@ -31,19 +35,27 @@ export default function MatchDetailPage() {
     }
   }, [params]);
   useEffect(() => {
-    const ws = new WebSocket(
-      "ws://homelander-production.up.railway.app/get6/event/socket/ws"
-    );
-    ws.onmessage = async (event) => {
-      const data = JSON.parse(event.data);
-      if (data.id) {
-        const response2 = await axios.get(`/get6/event/${data.id}`);
-        setEvent(response2.data.result);
-      }
-    };
+    try {
+      const ws = new WebSocket(
+        "ws://homelander-production.up.railway.app/get6/event/socket/ws"
+      );
+      ws.onmessage = async (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type !== "connected" && data.id) {
+            const response2 = await axios.get(`/get6/event/${data.id}`);
+            setEvent(response2.data.result);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
-    ws.onopen = () => console.log("Connected");
-    ws.onerror = (error) => console.error("WebSocket error:", error);
+      ws.onopen = () => console.log("Connected");
+      ws.onerror = (error) => console.error("WebSocket error:", error);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
   return (
     <MainLayout>
